@@ -1,0 +1,13 @@
+package com.auth.vibe.login.payload;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class ApiExpectionResponse {
+    String massage;
+    boolean status;
+}
