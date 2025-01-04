@@ -1,0 +1,148 @@
+<nav class="navbar">
+    <div class="navbar-logo">
+        <a href="{{navbar.logo.link}}">
+            <img src="{{navbar.logo.image}}" alt="{{navbar.logo.altText}}">
+        </a>
+    </div>
+    <ul class="navbar-categories">
+        {{#each navbar.categories}}
+            <li class="category">
+                <span>{{name}}</span>
+                <ul class="subcategory">
+                    {{#each categoryModels}}
+                        <li class="subcategory-item">
+                            <span>{{name}}</span>
+                            <ul class="attributes">
+                                {{#each categoryAttributeModels}}
+                                    <li class="attribute">{{name}}</li>
+                                {{/each}}
+                            </ul>
+                        </li>
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
+    </ul>
+    <ul class="navbar-actions">
+        {{#each navbar.actions}}
+            <li class="action">
+                <a href="{{link}}">
+                    <i class="icon-{{icon}}"></i> {{name}}
+                    {{#if count}}
+                        <span class="count">{{count}}</span>
+                    {{/if}}
+                </a>
+            </li>
+        {{/each}}
+    </ul>
+    <div class="navbar-search">
+        <form action="{{navbar.search.action}}" method="GET">
+            <input type="text" placeholder="{{navbar.search.placeholder}}" name="query">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+<style>
+    /* Navbar container */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    padding: 10px;
+    color: white;
+}
+
+/* Logo */
+.navbar-logo img {
+    height: 40px;
+}
+
+/* Categories */
+.navbar-categories {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-categories .category {
+    position: relative;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.navbar-categories .category .subcategory {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    list-style: none;
+    padding: 10px;
+    margin: 0;
+    border-radius: 4px;
+}
+
+.navbar-categories .category:hover .subcategory {
+    display: block;
+}
+
+.navbar-categories .subcategory-item {
+    margin-bottom: 10px;
+}
+
+.navbar-categories .subcategory-item .attributes {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar-categories .subcategory-item .attributes .attribute {
+    margin-bottom: 5px;
+}
+
+/* Actions */
+.navbar-actions {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-actions .action {
+    margin-right: 20px;
+}
+
+.navbar-actions .action a {
+    color: white;
+    text-decoration: none;
+}
+
+.navbar-actions .action .count {
+    background-color: red;
+    border-radius: 50%;
+    padding: 2px 6px;
+    margin-left: 5px;
+}
+
+/* Search */
+.navbar-search form {
+    display: flex;
+}
+
+.navbar-search input[type="text"] {
+    padding: 5px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.navbar-search button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #555;
+    color: white;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+}
+</style>

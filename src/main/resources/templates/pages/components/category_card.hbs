@@ -1,0 +1,77 @@
+<div class="category-container">
+    <div class="category-card">
+        <img src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-t-shirt-white-png-image_4167844.jpg" alt="T-Shirts" class="category-image">
+        <h3 class="category-title">T-Shirts</h3>
+        <p class="category-description">Explore our range of stylish T-Shirts for all occasions.</p>
+    </div>
+    <div class="category-card">
+        <img src="https://png.pngtree.com/png-vector/20220120/ourlarge/pngtree-pants-png-image_4293273.png" alt="Pants" class="category-image">
+        <h3 class="category-title">Pants</h3>
+        <p class="category-description">Find the perfect pants for casual and formal wear.</p>
+    </div>
+    <div class="category-card">
+        <img src="https://png.pngtree.com/png-clipart/20200225/original/pngtree-white-hoodie-mockup-realistic-style-png-image_5268148.jpg" alt="Accessories" class="category-image">
+        <h3 class="category-title">Hoodies</h3>
+        <p class="category-description">Add a touch of style with our trendy Hoodies.</p>
+    </div>
+</div>
+<style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+.category-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.category-card {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.category-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.category-image {
+  width: 100%;
+  height: auto;
+}
+
+.category-title {
+  font-size: 1.5em;
+  margin: 15px 0 10px;
+  color: #333;
+}
+
+.category-description {
+  font-size: 1em;
+  color: #666;
+  margin: 0 15px 20px;
+}
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const categoryCards = document.querySelectorAll(".category-card");
+
+  categoryCards.forEach((card) => {
+    card.addEventListener("click", () => {
+      alert(`You clicked on ${card.querySelector(".category-title").innerText}`);
+    });
+  });
+});
+
+</script>
