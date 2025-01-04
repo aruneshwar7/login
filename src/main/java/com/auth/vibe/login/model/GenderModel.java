@@ -26,6 +26,12 @@ public class GenderModel {
     @Column(unique = true, nullable = false)
     private String name;
 
+    @NotBlank(message = "imageUrl is required")
+    @Size(min = 3, max = 100, message = "imageUrl must be between 3 and 100 characters")
+    @Column(unique = true, nullable = false)
+    private String imageUrl;
+
+
     @OneToMany(mappedBy = "gender")
     List<CategoryModel> categoryModels = new ArrayList<>();
     @Override

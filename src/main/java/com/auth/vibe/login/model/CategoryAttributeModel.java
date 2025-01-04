@@ -25,6 +25,13 @@ public class CategoryAttributeModel {
     @Size(min = 3, max = 50, message = "category attribute must be between 3 and 50 characters")
     private String name;
 
+    @NotBlank(message = "imageUrl is required")
+    @Size(min = 3, max = 100, message = "imageUrl must be between 3 and 100 characters")
+    @Column(unique = true, nullable = false)
+    private String imageUrl;
+
+
+
     @ManyToOne
     @JoinColumn(name = "category_id")
     @JsonIgnore
