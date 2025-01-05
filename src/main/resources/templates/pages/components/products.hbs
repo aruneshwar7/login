@@ -1,0 +1,121 @@
+<div class="products-container">
+    {{#each products.content}}
+        <div class="product-card">
+            <img src="{{imageUrl}}" alt="{{name}}" class="product-image" />
+            <div class="product-details">
+                <h3 class="product-name">{{name}}</h3>
+                <p class="product-description">{{description}}</p>
+                <p class="product-category">Category: {{category.name}}</p>
+                <p class="product-price">
+                    <span class="selling-price">${{sellingPrice}}</span>
+                    {{#if offerPrice}}
+                        <span class="offer-price">${{offerPrice}}</span>
+                    {{/if}}
+                </p>
+            </div>
+        </div>
+    {{/each}}
+</div>
+
+<style>
+    /* Container Styles */
+.products-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Card Styles */
+.product-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Image Styles */
+.product-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Details Styles */
+.product-details {
+    padding: 15px;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #333;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #666;
+    margin: 5px 0 10px;
+}
+
+.product-category {
+    font-size: 13px;
+    color: #999;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+.selling-price {
+    color: #000;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.offer-price {
+    color: #f00;
+    text-decoration: line-through;
+}
+
+/* Pagination Styles */
+.pagination {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+</style>
