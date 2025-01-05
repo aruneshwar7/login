@@ -5,24 +5,28 @@
         </a>
     </div>
     <ul class="navbar-categories">
-        {{#each navbar.categories}}
-            <li class="category">
-                <span>{{name}}</span>
-                <ul class="subcategory">
-                    {{#each categoryModels}}
-                        <li class="subcategory-item">
-                            <span>{{name}}</span>
-                            <ul class="attributes">
-                                {{#each categoryAttributeModels}}
-                                    <li class="attribute">{{name}}</li>
-                                {{/each}}
-                            </ul>
-                        </li>
-                    {{/each}}
-                </ul>
-            </li>
-        {{/each}}
+        <li class="category">
+            <button class="category-button">Category</button>
+            <ul class="subcategory">
+                {{#each navbar.categories}}
+                    <li class="subcategory-item">
+                        <span><a href="http://localhost:8080/api/products/{{name}}"> {{name}}</a>  </span>
+                        <ul class="attributes">
+                            {{#each categoryModels}}
+                                <li class="attribute"><a href="http://localhost:8080/api/products/{{../name}}/{{name}}"> {{name}}</a> </li>
+                            {{/each}}
+                        </ul>
+                    </li>
+                {{/each}}
+            </ul>
+        </li>
     </ul>
+    <div class="navbar-search">
+        <form action="{{navbar.search.action}}" method="GET">
+            <input type="text" placeholder="{{navbar.search.placeholder}}" name="query">
+            <button type="submit">Search</button>
+        </form>
+    </div>
     <ul class="navbar-actions">
         {{#each navbar.actions}}
             <li class="action">
@@ -35,12 +39,7 @@
             </li>
         {{/each}}
     </ul>
-    <div class="navbar-search">
-        <form action="{{navbar.search.action}}" method="GET">
-            <input type="text" placeholder="{{navbar.search.placeholder}}" name="query">
-            <button type="submit">Search</button>
-        </form>
-    </div>
+
 </nav>
 <style>
     /* Navbar container */
@@ -48,14 +47,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    padding: 10px;
+    background-color: #f1c211;
+    padding: 0px;
     color: white;
 }
 
 /* Logo */
 .navbar-logo img {
-    height: 40px;
+    height: 76px;
+    width: 100px;
 }
 
 /* Categories */
@@ -69,10 +69,18 @@
 .navbar-categories .category {
     position: relative;
     margin-right: 20px;
-    cursor: pointer;
 }
 
-.navbar-categories .category .subcategory {
+.navbar-categories .category-button {
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px;
+}
+
+.navbar-categories  .subcategory {
     display: none;
     position: absolute;
     top: 100%;
@@ -84,12 +92,21 @@
     border-radius: 4px;
 }
 
-.navbar-categories .category:hover .subcategory {
+.navbar-categories .subcategory {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-categories .category-button:hover + .subcategory,
+.navbar-categories .subcategory:hover {
     display: block;
+    opacity: 1;
 }
 
 .navbar-categories .subcategory-item {
     margin-bottom: 10px;
+    border-bottom: solid;
 }
 
 .navbar-categories .subcategory-item .attributes {

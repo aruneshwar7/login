@@ -1,34 +1,5 @@
 {
-  "navbar": {
-    "logo": {
-      "image": "/images/logo.png",
-      "altText": "E-Shop Logo",
-      "link": "/"
-    },
-    "actions": [
-      {
-        "id": 1,
-        "name": "Login",
-        "icon": "user",
-        "link": "/login"
-      },
-      {
-        "id": 2,
-        "name": "Cart",
-        "icon": "cart",
-        "link": "/cart",
-        "count": 3
-      },
-      {
-        "id": 3,
-        "name": "Wishlist",
-        "icon": "heart",
-        "link": "/wishlist"
-      }
-    ],
-    "search": {
-      "placeholder": "Search for products...",
-      "action": "/search"
-    }
-  }
+  "navbar":{},
+  "categories": {},
+  "products": {}
 }

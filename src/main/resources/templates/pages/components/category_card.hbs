@@ -1,77 +1,119 @@
-<div class="category-container">
-    <div class="category-card">
-        <img src="https://png.pngtree.com/png-clipart/20190520/original/pngtree-t-shirt-white-png-image_4167844.jpg" alt="T-Shirts" class="category-image">
-        <h3 class="category-title">T-Shirts</h3>
-        <p class="category-description">Explore our range of stylish T-Shirts for all occasions.</p>
+
+<div class="categories-card">
+    <h2>Categories</h2>
+    <div >
+        {{#each categories}}
+            <li class="subcategory-item">
+                <span class="gender-name">{{name}}</span>
+                <img src={{imageUrl}} alt="gender {{name}}" class="categories-card-image" >
+                <ul class="categories">
+                    {{#each categoryModels}}
+                        <li class="category-name">{{name}}</li>
+                        <img src={{imageUrl}} alt="category {{name}}" class="categories-card-image category-image" >
+                    {{/each}}
+                </ul>
+            </li>
+        {{/each}}
     </div>
-    <div class="category-card">
-        <img src="https://png.pngtree.com/png-vector/20220120/ourlarge/pngtree-pants-png-image_4293273.png" alt="Pants" class="category-image">
-        <h3 class="category-title">Pants</h3>
-        <p class="category-description">Find the perfect pants for casual and formal wear.</p>
-    </div>
-    <div class="category-card">
-        <img src="https://png.pngtree.com/png-clipart/20200225/original/pngtree-white-hoodie-mockup-realistic-style-png-image_5268148.jpg" alt="Accessories" class="category-image">
-        <h3 class="category-title">Hoodies</h3>
-        <p class="category-description">Add a touch of style with our trendy Hoodies.</p>
-    </div>
-</div>
 <style>
-    body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+    /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
 }
 
-.category-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-  padding: 20px;
+/* Categories Card Container */
+.categories-card {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
-.category-card {
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  width: 300px;
-  text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
+.categories-card h2 {
+    text-align: center;
+    font-size: 1.8em;
+    color: #333;
+    margin-bottom: 20px;
 }
 
-.category-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+/* Gender Section */
+.subcategory-item {
+    list-style: none;
+    margin: 20px 0;
+    padding: 15px;
+    background: #fdfdfd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.gender-name {
+    display: block;
+    font-size: 1.2em;
+    color: #555;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.categories-card-image {
+    max-width: 90px;
+    height: auto;
+    border-radius: 6px;
+    margin: 10px auto;
+    display: block;
+    object-fit: cover;
+}
+
+/* Categories Section */
+.categories {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.category-name {
+    font-size: 1em;
+    color: #666;
+    margin: 10px 0;
+    text-align: center;
 }
 
 .category-image {
-  width: 100%;
-  height: auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 6px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.category-title {
-  font-size: 1.5em;
-  margin: 15px 0 10px;
-  color: #333;
+/* Hover Effects */
+.categories-card-image:hover,
+.category-image:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
 }
 
-.category-description {
-  font-size: 1em;
-  color: #666;
-  margin: 0 15px 20px;
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .categories {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .subcategory-item {
+        margin: 15px 0;
+    }
 }
+
 </style>
-
-<script>
-    document.addEventListener("DOMContentLoaded", () => {
-  const categoryCards = document.querySelectorAll(".category-card");
-
-  categoryCards.forEach((card) => {
-    card.addEventListener("click", () => {
-      alert(`You clicked on ${card.querySelector(".category-title").innerText}`);
-    });
-  });
-});
-
-</script>
+</div>

@@ -27,7 +27,7 @@ public class CategoryModel {
     private String name;
     @NotBlank(message = "imageUrl is required")
     @Size(min = 3, max = 100, message = "imageUrl must be between 3 and 100 characters")
-    @Column(unique = true, nullable = false)
+    @Column( nullable = false)
     private String imageUrl;
 
 
@@ -39,6 +39,11 @@ public class CategoryModel {
 
     @OneToMany(mappedBy = "category")
     List<CategoryAttributeModel> categoryAttributeModels = new ArrayList<>();
+
+    @OneToMany(mappedBy = "category")
+     @JsonIgnore
+    List<InventoryModel> inventoryModels = new ArrayList<>();
+
     @Override
     public int hashCode(){
         return Objects.hash(id);
